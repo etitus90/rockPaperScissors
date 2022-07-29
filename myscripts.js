@@ -1,3 +1,6 @@
+const btns = document.querySelectorAll('button');
+
+
 function getComputerChoice() {
     let random = Math.floor(Math.random()*3)+1
     let compChoice = ""
@@ -29,27 +32,37 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+
+
+
 function game() {
     let results = ""
     let playerScore = 0
     let compScore = 0
+    const computerSelection = getComputerChoice()
+    btns.forEach(btn => btn.addEventListener("click", () => {
+        console.log(`${btn.id}`)
+        console.log(computerSelection)
+        console.log(playRound(`${btn.id}`, computerSelection))
+    }));
+    
 
-    for (let i = 0; i < 5; i++) {
-        const playerSelection = prompt("Rock, paper, or scissors?: ")
-        const computerSelection = getComputerChoice()
-        const round = playRound(playerSelection, computerSelection)
-        if (round === 1) {
-            results = `You win! ${playerSelection} beats ${computerSelection}`
-            playerScore += 1
-        } else if (round === 2) {
-            results = `You lose! ${computerSelection} beats ${playerSelection}`
-            compScore += 1
-        } else {
-            results = `Draw! Please try again.`
-        }
-        console.log(results)
-        console.log(`Current Scores: Player: ${playerScore} Computer: ${compScore}`)
-    }
+//    for (let i = 0; i < 5; i++) {
+//        const playerSelection = prompt("Rock, paper, or scissors?: ")
+//        
+//        const round = playRound(playerSelection, computerSelection)
+//       if (round === 1) {
+//            results = `You win! ${playerSelection} beats ${computerSelection}`
+//          playerScore += 1
+//        } else if (round === 2) {
+//            results = `You lose! ${computerSelection} beats ${playerSelection}`
+//            compScore += 1
+//        } else {
+//            results = `Draw! Please try again.`
+//        }
+//        console.log(results)
+//        console.log(`Current Scores: Player: ${playerScore} Computer: ${compScore}`)
+//    }
     console.log(`Final Score: Player: ${playerScore} Computer: ${compScore}`)
     if (playerScore > compScore) {
         console.log("Player wins!")
@@ -60,4 +73,4 @@ function game() {
     }
 }
 
-game()
+ game()

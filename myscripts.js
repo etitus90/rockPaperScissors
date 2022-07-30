@@ -53,19 +53,16 @@ function game() {
             results = `Draw! Please try again.`
         }
         display.innerHTML = `${results} <br> Final Score: Player: ${playerScore} Computer: ${compScore}`
-    }));
-
-//        console.log(results)
-//        console.log(`Current Scores: Player: ${playerScore} Computer: ${compScore}`)
-//    }
-    
-    if (playerScore > compScore) {
-        console.log("Player wins!")
-    } else if (playerScore < compScore) {
-        console.log("Player loses!")
-    } else {
-        console.log("Tied game.")
-    }
+            if (playerScore === 5) {
+                display.innerHTML = `Player wins! <br> Final Score: Player: ${playerScore} Computer: ${compScore} <br> Play again?`
+                playerScore = 0
+                compScore = 0
+            } else if (compScore === 5) {
+                display.innerHTML = `Player loses! <br> Final Score: Player: ${playerScore} Computer: ${compScore} <br> Play again?`
+                playerScore = 0
+                compScore = 0
+            } 
+    }));    
 }
 
  game()
